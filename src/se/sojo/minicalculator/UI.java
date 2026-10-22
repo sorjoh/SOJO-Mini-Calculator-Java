@@ -198,6 +198,8 @@ public class UI implements ActionListener {
         if (DEBUG)
             System.out.println("Number(before) : button=" + inputKey + ", inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult + ", hasOperator=" + calc.hasOperator);
 
+        // TODO: +2  (eg. 0+2 = 0+02)
+        // TODO: 0+2 (working)
         if (calc.hasResult) {
             calc.resetValues();
             calc.inputValue = inputKey;
