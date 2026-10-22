@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
-import java.util.StringTokenizer;
+import java.math.BigDecimal;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -102,7 +102,7 @@ public class UI implements ActionListener {
             }
         };
         display.setCaret(caret);
-        display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        //display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
         for (int i = 0; i < 10; i++) {
             buttonNumber[i].setFont(font);
@@ -216,9 +216,13 @@ public class UI implements ActionListener {
                 if (calc.currentOperator == Calculator.Operator.MINUS && currentResultValue.isEmpty()) {
                     currentResultValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
                 }
-            } catch (Exception _) {
-                //calc.outputValue = "";
-                //calc.inputValue = "";
+            } catch (Exception e) {
+                if (DEBUG)
+                    System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
+
+                // Error fix when splitting outputValue
+                calc.inputValue += inputKey;
+                currentResultValue = calc.outputValue;
             }
 
             calc.outputValue = currentResultValue + calc.getOperationSign(calc.currentOperator) + calc.inputValue;
@@ -252,19 +256,28 @@ public class UI implements ActionListener {
                     calc.outputValue = "";
                     calc.inputValue = splitOutputValue[0];
                 }
-            } catch (Exception _) {
-                //calc.outputValue = "";
+            } catch (Exception e) {
+                if (DEBUG)
+                    System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
+
+                // Error fix when splitting outputValue
+                if (!calc.hasOperator) {
+                    calc.inputValue = calc.outputValue;
+                    calc.outputValue = "";
+                }
             }
 
             if (!calc.inputValue.contains(decimal)) {
-                calc.inputValue += decimal;
+                System.out.println("outputValue=" + calc.outputValue + ", Decimal=" + decimal);
+                calc.inputValue = calc.inputValue + decimal;
             }
         }
 
-        if (calc.inputValue.startsWith(decimal))
+        if (calc.inputValue.startsWith(decimal)) {
             calc.inputValue = "0" + calc.inputValue;
+        }
 
-        calc.outputValue += calc.inputValue;
+        calc.outputValue = calc.outputValue + calc.inputValue;
 
         displayOutput(calc.outputValue);
 
@@ -293,13 +306,13 @@ public class UI implements ActionListener {
                     calc.outputValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
                     calc.inputValue = splitOutputValue[2];
                 }
-            } catch (Exception _) {
-                //calc.outputValue = "";
-                //calc.inputValue = "";
+            } catch (Exception e) {
+                if (DEBUG)
+                    System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
             }
 
-            calc.firstValue = Double.parseDouble(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
-            calc.secondValue = Double.parseDouble(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
+            calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+            calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
             calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
 
@@ -346,23 +359,30 @@ public class UI implements ActionListener {
                 } else {
                     calc.inputValue = splitOutputValue[1];
                 }
-            } catch (Exception _) {
-                calc.resetValues();
-            }
-        } catch (Exception _) {
+            } catch (Exception e) {
+                if (DEBUG)
+                    System.out.println(e.getMessage() + ", Inner Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
 
+                //calc.resetValues();
+            }
+        } catch (Exception e) {
+            if (DEBUG)
+                System.out.println(e.getMessage() + ", Outer Try: outputValue=" + calc.outputValue);
         }
 
         try {
-            calc.firstValue = Double.parseDouble(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
-            calc.secondValue = Double.parseDouble(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
+            calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+            calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
             calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, calc.currentOperator);
 
             calc.inputValue = "";
             calc.outputValue = String.valueOf(calc.resultValue).replace('.', DECIMAL_SEPARATOR);
-        } catch (Exception _) {
-            //calc.resetValues();
+        } catch (Exception e) {
+            if (DEBUG)
+                System.out.println(e.getMessage() + ", After Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
+
+            calc.resetValues();
         }
 
         calc.currentOperator = Calculator.Operator.NONE;

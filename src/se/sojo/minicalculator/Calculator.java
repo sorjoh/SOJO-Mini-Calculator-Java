@@ -1,5 +1,9 @@
 package se.sojo.minicalculator;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 public class Calculator {
     // Status indicator if equal button or another calculation has presented a total result
     public Boolean hasResult;
@@ -10,9 +14,9 @@ public class Calculator {
     public Boolean hasOperator;
 
     // Variables holding the result and input values
-    public double resultValue;
-    public double firstValue;
-    public double secondValue;
+    public BigDecimal resultValue;
+    public BigDecimal firstValue;
+    public BigDecimal secondValue;
 
     // Variables holding the input and output text
     public String inputValue;
@@ -46,12 +50,14 @@ public class Calculator {
         };
     }
 
-    public double calculate(double firstValue, double secondValue, Operator operation) {
+    public BigDecimal calculate(BigDecimal firstValue, BigDecimal secondValue, Operator operation) {
+        MathContext mc = new MathContext(10, RoundingMode.DOWN);
+
         return switch(operation) {
-            case Operator.PLUS -> firstValue + secondValue;
-            case Operator.MINUS -> firstValue - secondValue;
-            case Operator.MULTIPLY -> firstValue * secondValue;
-            case Operator.DIVIDE -> firstValue / secondValue;
+            case Operator.PLUS -> firstValue. add(secondValue);
+            case Operator.MINUS -> firstValue.subtract(secondValue);
+            case Operator.MULTIPLY -> firstValue.multiply(secondValue);
+            case Operator.DIVIDE -> firstValue.divide(secondValue, mc);
             default -> firstValue;
         };
     }
@@ -63,9 +69,9 @@ public class Calculator {
 
         hasOperator = false;
 
-        resultValue = 0.0d;
-        firstValue = 0.0d;
-        secondValue = 0.0d;
+        resultValue = new BigDecimal(0);
+        firstValue =  new BigDecimal(0);
+        secondValue =  new BigDecimal(0);
 
         inputValue = "";
         outputValue = "";
