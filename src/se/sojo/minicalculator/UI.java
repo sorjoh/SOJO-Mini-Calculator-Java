@@ -6,14 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.math.BigDecimal;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.text.Caret;
-import javax.swing.text.DefaultCaret;
+import javax.swing.*;
+import javax.swing.text.*;
 
 public class UI implements ActionListener {
     private final JFrame frame;
@@ -25,6 +19,7 @@ public class UI implements ActionListener {
     private final JPanel panelRow4;
     private final JPanel panelRow5;
 
+    //private final JTextPane display;
     private final JTextArea display;
 
     private final JButton[] buttonNumber;
@@ -46,18 +41,19 @@ public class UI implements ActionListener {
     public int MAX_INPUT_LENGTH;
     public char DECIMAL_SEPARATOR;
 
+    int WIDTH = 230;
+    int HEIGHT = 260;
+    int DISPLAY_MAX_WIDTH = WIDTH - 20;
+
     public UI(Calculator calc, char decimalSeparator, Integer maxInputLength, Boolean debug) {
         this.calc = calc;
-
-        int width = 230;
-        int height = 260;
 
         DECIMAL_SEPARATOR = decimalSeparator;
         MAX_INPUT_LENGTH = maxInputLength;
         DEBUG = debug;
 
         frame = new JFrame("MiniCalc");
-        frame.setSize(width, height);
+        frame.setSize(WIDTH, HEIGHT);
 
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -70,6 +66,7 @@ public class UI implements ActionListener {
         font = new Font("Consolas",Font.PLAIN, 18);
         textFont = new Font("Consolas",Font.BOLD, 24);
 
+        //display = new JTextPane();
         display = new JTextArea(1, MAX_INPUT_LENGTH);
 
         buttonNumber = new JButton[10];
@@ -94,6 +91,8 @@ public class UI implements ActionListener {
         display.setFont(textFont);
         display.setEditable(false);
 
+        display.setSize(DISPLAY_MAX_WIDTH, Integer.MAX_VALUE);
+
         // Remove Caret
         Caret caret = new DefaultCaret() {
             public void focusGained(FocusEvent e) {
@@ -102,7 +101,7 @@ public class UI implements ActionListener {
             }
         };
         display.setCaret(caret);
-        //display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        //display.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
         for (int i = 0; i < 10; i++) {
             buttonNumber[i].setFont(font);
@@ -204,10 +203,10 @@ public class UI implements ActionListener {
             calc.inputValue = inputKey;
             calc.outputValue = calc.inputValue;
         } else if (calc.hasOperator) {
-            String currentResultValue = "";
+            String currentResultValue;
 
             try {
-                String[] splitOutputValue = calc.outputValue.split("[" + calc.getOperationSign(calc.currentOperator) + "]");
+                String[] splitOutputValue = calc.outputValue.trim().split("[" + calc.getOperationSign(calc.currentOperator) + "]");
 
                 calc.inputValue += inputKey;
 
@@ -222,7 +221,7 @@ public class UI implements ActionListener {
 
                 // Error fix when splitting outputValue
                 calc.inputValue += inputKey;
-                currentResultValue = calc.outputValue;
+                currentResultValue = calc.outputValue.trim();
             }
 
             calc.outputValue = currentResultValue + calc.getOperationSign(calc.currentOperator) + calc.inputValue;
@@ -362,8 +361,6 @@ public class UI implements ActionListener {
             } catch (Exception e) {
                 if (DEBUG)
                     System.out.println(e.getMessage() + ", Inner Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
-
-                //calc.resetValues();
             }
         } catch (Exception e) {
             if (DEBUG)
@@ -397,10 +394,17 @@ public class UI implements ActionListener {
 
     // ========= DISPLAY OUTPUT =========
     private void displayOutput(String output) {
+        StringBuilder space = new StringBuilder();
+
+        String tmp = "";
+
         if (output.isEmpty())
-            display.setText("0");
+            tmp = "0";
         else
-            display.setText(output);
+            tmp = output;
+
+        space.append(" ".repeat(Math.max(0, MAX_INPUT_LENGTH - tmp.length())));
+        display.setText(space + tmp);
     }
 }
 
