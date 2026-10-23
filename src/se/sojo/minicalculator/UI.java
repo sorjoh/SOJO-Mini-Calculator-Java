@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -19,7 +20,6 @@ public class UI implements ActionListener {
     private final JPanel panelRow4;
     private final JPanel panelRow5;
 
-    //private final JTextPane display;
     private final JTextArea display;
 
     private final JButton[] buttonNumber;
@@ -66,7 +66,6 @@ public class UI implements ActionListener {
         font = new Font("Consolas",Font.PLAIN, 18);
         textFont = new Font("Consolas",Font.BOLD, 24);
 
-        //display = new JTextPane();
         display = new JTextArea(1, MAX_INPUT_LENGTH);
 
         buttonNumber = new JButton[10];
@@ -101,7 +100,6 @@ public class UI implements ActionListener {
             }
         };
         display.setCaret(caret);
-        //display.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
         for (int i = 0; i < 10; i++) {
             buttonNumber[i].setFont(font);
@@ -198,8 +196,6 @@ public class UI implements ActionListener {
         if (DEBUG)
             System.out.println("Number(before) : button=" + inputKey + ", inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult + ", hasOperator=" + calc.hasOperator);
 
-        // TODO: +2  (eg. 0+2 = 0+02)
-        // TODO: 0+2 (working)
         if (calc.hasResult) {
             calc.resetValues();
             calc.inputValue = inputKey;
@@ -210,7 +206,10 @@ public class UI implements ActionListener {
             try {
                 String[] splitOutputValue = calc.outputValue.trim().split("[" + calc.getOperationSign(calc.currentOperator) + "]");
 
-                calc.inputValue += inputKey;
+                if (Objects.equals(calc.inputValue, "0"))
+                    calc.inputValue = inputKey;
+                else
+                    calc.inputValue += inputKey;
 
                 currentResultValue = splitOutputValue[0];
 
@@ -263,13 +262,12 @@ public class UI implements ActionListener {
 
                 // Error fix when splitting outputValue
                 if (!calc.hasOperator) {
-                    calc.inputValue = calc.outputValue;
                     calc.outputValue = "";
                 }
             }
 
             if (!calc.inputValue.contains(decimal)) {
-                System.out.println("outputValue=" + calc.outputValue + ", Decimal=" + decimal);
+                //System.out.println("outputValue=" + calc.outputValue + ", Decimal=" + decimal);
                 calc.inputValue = calc.inputValue + decimal;
             }
         }
