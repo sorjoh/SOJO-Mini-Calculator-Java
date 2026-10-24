@@ -231,6 +231,8 @@ public class UI implements ActionListener {
             calc.outputValue = calc.inputValue;
         }
 
+        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
+
         displayOutput(calc.outputValue);
 
         if (DEBUG)
@@ -254,7 +256,12 @@ public class UI implements ActionListener {
                     calc.inputValue = splitOutputValue[1];
                 } else {
                     calc.outputValue = "";
-                    calc.inputValue = splitOutputValue[0];
+
+                    //Bugfix for 2.3 + 5 = .
+                    if (calc.isEqual)
+                        calc.inputValue = "";
+                    else
+                        calc.inputValue = splitOutputValue[0];
                 }
             } catch (Exception e) {
                 if (DEBUG)
@@ -267,7 +274,6 @@ public class UI implements ActionListener {
             }
 
             if (!calc.inputValue.contains(decimal)) {
-                //System.out.println("outputValue=" + calc.outputValue + ", Decimal=" + decimal);
                 calc.inputValue = calc.inputValue + decimal;
             }
         }
@@ -277,6 +283,8 @@ public class UI implements ActionListener {
         }
 
         calc.outputValue = calc.outputValue + calc.inputValue;
+
+        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 
@@ -335,6 +343,8 @@ public class UI implements ActionListener {
 
         calc.hasOperator = true;
 
+        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
+
         displayOutput(calc.outputValue);
 
         if (DEBUG)
@@ -385,6 +395,8 @@ public class UI implements ActionListener {
         calc.currentOperator = Calculator.Operator.NONE;
         calc.hasOperator = false;
         calc.hasResult = false;
+
+        calc.isEqual = true; //Bugfix for 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 

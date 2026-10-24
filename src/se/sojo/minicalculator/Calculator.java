@@ -22,6 +22,8 @@ public class Calculator {
     public String inputValue;
     public String outputValue;
 
+    public Boolean isEqual; //Bugfix for 2.3 + 5 = .
+
     public enum Operator {
         PLUS,
         MINUS,
@@ -75,5 +77,7 @@ public class Calculator {
 
         inputValue = "";
         outputValue = "";
+
+        isEqual = false; //Bugfix for 2.3 + 5 = .
     }
 }
