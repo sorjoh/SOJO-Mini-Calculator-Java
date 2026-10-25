@@ -316,13 +316,22 @@ public class UI implements ActionListener {
             } catch (Exception e) {
                 if (DEBUG)
                     System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
+
+                calc.inputValue = "0";
+                calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             }
 
             calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
-            calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
+            // TODO: 12 * %
+            try {
+                calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
 
+                calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+            }
             calc.currentOperator = operation;
 
             calc.inputValue = "";
