@@ -290,10 +290,10 @@ public class UI implements ActionListener {
                     // Set input value to the second split output value
                     calc.inputValue = splitOutputValue[1];
                 } else { // Otherwise if calculation has no operator
-                    // Set output value to a empty string
+                    // Set output value to an empty string
                     calc.outputValue = "";
 
-                    // If equal has been pressed before this button then replace inputValue with the a empty string, otherwise add the first split value
+                    // If equal has been pressed before this button then replace inputValue with an empty string, otherwise add the first split value
                     calc.inputValue = calc.isEqual ? "" : splitOutputValue[0];
                 }
             } catch (Exception e) {
@@ -467,12 +467,7 @@ public class UI implements ActionListener {
     private void displayOutput(String output) {
         StringBuilder space = new StringBuilder();
 
-        String tmp = "";
-
-        if (output.isEmpty())
-            tmp = "0";
-        else
-            tmp = output;
+        String tmp = output.isEmpty() ? "0" : output;
 
         space.append(" ".repeat(Math.max(0, MAX_INPUT_LENGTH - tmp.length())));
         display.setText(space + tmp);
