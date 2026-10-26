@@ -231,7 +231,7 @@ public class UI implements ActionListener {
             calc.outputValue = calc.inputValue;
         }
 
-        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
+        calc.isEqual = false; //Bugfix for example 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 
@@ -257,7 +257,7 @@ public class UI implements ActionListener {
                 } else {
                     calc.outputValue = "";
 
-                    //Bugfix for 2.3 + 5 = .
+                    //Bugfix for example 2.3 + 5 = .
                     if (calc.isEqual)
                         calc.inputValue = "";
                     else
@@ -284,7 +284,7 @@ public class UI implements ActionListener {
 
         calc.outputValue = calc.outputValue + calc.inputValue;
 
-        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
+        calc.isEqual = false; //Bugfix for example 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 
@@ -299,6 +299,8 @@ public class UI implements ActionListener {
             System.out.println("Operator(before) : button=" + calc.getOperationSign(operation) + ", inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult + ", hasOperator=" + calc.hasOperator);
 
         Calculator.Operator previousOperator = calc.currentOperator;
+
+        boolean doNotCalculate = false; // Fix for example 12 * %
 
         if (calc.hasOperator) {
             try {
@@ -317,6 +319,8 @@ public class UI implements ActionListener {
                 if (DEBUG)
                     System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
 
+                doNotCalculate = true; // Fix for example 12 * %
+
                 calc.inputValue = "0";
                 calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             }
@@ -324,14 +328,17 @@ public class UI implements ActionListener {
             calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
-            // TODO: 12 * %
-            try {
-                calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+            // Fix for example 12 * %
+            if (!doNotCalculate) {
+                try {
+                    calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
 
-                calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+                    calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+                }
             }
+
             calc.currentOperator = operation;
 
             calc.inputValue = "";
@@ -352,7 +359,7 @@ public class UI implements ActionListener {
 
         calc.hasOperator = true;
 
-        calc.isEqual = false; //Bugfix for 2.3 + 5 = .
+        calc.isEqual = false; //Bugfix for example 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 
@@ -398,14 +405,19 @@ public class UI implements ActionListener {
             if (DEBUG)
                 System.out.println(e.getMessage() + ", After Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
 
+            // Fix if operator is present with no second value
+            String tmpOutputValue = calc.hasOperator ? calc.outputValue : "";
+
             calc.resetValues();
+
+            calc.outputValue = tmpOutputValue;
         }
 
         calc.currentOperator = Calculator.Operator.NONE;
         calc.hasOperator = false;
         calc.hasResult = false;
 
-        calc.isEqual = true; //Bugfix for 2.3 + 5 = .
+        calc.isEqual = true; //Bugfix for example 2.3 + 5 = .
 
         displayOutput(calc.outputValue);
 
