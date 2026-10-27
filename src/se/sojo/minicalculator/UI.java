@@ -336,69 +336,101 @@ public class UI implements ActionListener {
         if (DEBUG)
             System.out.println("Operator(before) : button=" + calc.getOperationSign(operation) + ", inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult + ", hasOperator=" + calc.hasOperator);
 
+        // Save current operator as previous operator
         Calculator.Operator previousOperator = calc.currentOperator;
 
-        boolean doNotCalculate = false; // Fix for example 12 * %
+        // Variable to flag when no calculation shall be done when error happens, for example 12 * /
+        boolean doNotCalculate = false;
 
-        if (calc.hasOperator) {
+        if (calc.hasOperator) { // Calculation has operator
             try {
+                // Get first and second value from the output
                 String[] splitOutputValue = calc.outputValue.split("[" + calc.getOperationSign(previousOperator) + "]");
 
+                // Reset values
                 calc.resetValues();
 
+                // Set output value to the first split output value
                 calc.outputValue = splitOutputValue[0];
+                // Set input value to the second split output value
                 calc.inputValue = splitOutputValue[1];
 
+                // Add minus sign in the beginning if current output value is empty and previous operator is minus
                 if (previousOperator == Calculator.Operator.MINUS && calc.outputValue.isEmpty()) {
+                    // Set output value to the second split output value
                     calc.outputValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
+                    // Set input value to the third split output value
                     calc.inputValue = splitOutputValue[2];
                 }
             } catch (Exception e) {
                 if (DEBUG)
                     System.out.println(e.getMessage() + ", outputValue=" + calc.outputValue);
 
-                doNotCalculate = true; // Fix for example 12 * %
+                // Set flag to not do any calculation when the error happens, for example 12 * /
+                doNotCalculate = true;
 
+                // Set input value to zero
                 calc.inputValue = "0";
+
+                // Replace the decimal from localities with a dot for the calculation
                 calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             }
 
+            // Convert and replace the decimal from localities with a dot for the calculation
             calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
             // Fix for example 12 * %
             if (!doNotCalculate) {
                 try {
+                    // Calculate the result
                     calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, previousOperator);
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    if (DEBUG)
+                        System.out.println(e.getMessage());
 
+                    // Convert and replace the decimal from localities with a dot for the calculation
                     calc.resultValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
                 }
             }
 
+            // Set current operator
             calc.currentOperator = operation;
 
+            // Set input value to an empty string
             calc.inputValue = "";
+
+            // Replace output value with the result and local decimal separator, plus the current operator sign
             calc.outputValue = String.valueOf(calc.resultValue).replace('.', DECIMAL_SEPARATOR) + calc.getOperationSign(calc.currentOperator);
-        } else if (calc.outputValue.isEmpty()) {
+        } else if (calc.outputValue.isEmpty()) { // Output value is empty
+            // Reset values
             calc.resetValues();
 
+            // Set current operator
             calc.currentOperator = operation;
 
+            // Set input value to zero
             calc.inputValue = "0";
+            // Replace output value with the input value plus the current operator sign
             calc.outputValue = calc.inputValue + calc.getOperationSign(calc.currentOperator);
-        } else {
+        } else { // Calculation has no operator and output value is not empty
+            // Set current operator
             calc.currentOperator = operation;
 
+            // Set input value to a empty string
             calc.inputValue = "";
+
+            // Add the current operator sign to output value
             calc.outputValue = calc.outputValue + calc.getOperationSign(calc.currentOperator);
         }
 
+        // Tell the app that a operator is present
         calc.hasOperator = true;
 
-        calc.isEqual = false; //Bugfix for example 2.3 + 5 = .
+        // Equal button has not been pressed
+        calc.isEqual = false;
 
+        // Display the output
         displayOutput(calc.outputValue);
 
         if (DEBUG)
@@ -411,15 +443,20 @@ public class UI implements ActionListener {
             System.out.println("Equal(before) : inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult);
 
         try {
+            // Get first and second value from the output
             String[] splitOutputValue = calc.outputValue.split("[" + calc.getOperationSign(calc.currentOperator) + "]");
 
+            // Set output value to the first split output value
             calc.outputValue = splitOutputValue[0];
 
             try {
+                // Add minus sign in the beginning if current output value is empty and current operator is minus
                 if (calc.currentOperator == Calculator.Operator.MINUS && calc.outputValue.isEmpty()) {
+                    // Set output value to the second split output value
                     calc.outputValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
+                    // Set input value to the third split output value
                     calc.inputValue = splitOutputValue[2];
-                } else {
+                } else { // Otherwise set input value to the second split output value
                     calc.inputValue = splitOutputValue[1];
                 }
             } catch (Exception e) {
@@ -432,31 +469,46 @@ public class UI implements ActionListener {
         }
 
         try {
+            // Convert and replace the decimal from localities with a dot for the calculation
             calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
             calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
 
+            // Calculate the result
             calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, calc.currentOperator);
 
+            // Set input value to an empty string
             calc.inputValue = "";
+
+            // Convert and replace the decimal from localities with a dot for the calculation
             calc.outputValue = String.valueOf(calc.resultValue).replace('.', DECIMAL_SEPARATOR);
         } catch (Exception e) {
             if (DEBUG)
                 System.out.println(e.getMessage() + ", After Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
 
-            // Fix if operator is present with no second value
+            // Fix if operator is present with no second value and also reset all values if Equal been pressed twice,
+            // otherwise reset all values except for the output value
             String tmpOutputValue = calc.hasOperator ? calc.outputValue : "";
 
+            // Reset values
             calc.resetValues();
 
+            // Restore the output value if needed
             calc.outputValue = tmpOutputValue;
         }
 
+        // Set current operator to none
         calc.currentOperator = Calculator.Operator.NONE;
+
+        // No operator is used
         calc.hasOperator = false;
+
+        // Set a flag that no result has been calculated, even if it has been done
         calc.hasResult = false;
 
-        calc.isEqual = true; //Bugfix for example 2.3 + 5 = .
+        // Tell the app that equal has been pressed
+        calc.isEqual = true;
 
+        // Display the output
         displayOutput(calc.outputValue);
 
         if (DEBUG)
@@ -467,9 +519,13 @@ public class UI implements ActionListener {
     private void displayOutput(String output) {
         StringBuilder space = new StringBuilder();
 
+        // Add a zero if output is empty
         String tmp = output.isEmpty() ? "0" : output;
 
+        // Add space so the output is aligned at right
         space.append(" ".repeat(Math.max(0, MAX_INPUT_LENGTH - tmp.length())));
+
+        // Display output with needed spaces
         display.setText(space + tmp);
     }
 }
