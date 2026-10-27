@@ -417,14 +417,14 @@ public class UI implements ActionListener {
             // Set current operator
             calc.currentOperator = operation;
 
-            // Set input value to a empty string
+            // Set input value to an empty string
             calc.inputValue = "";
 
             // Add the current operator sign to output value
             calc.outputValue = calc.outputValue + calc.getOperationSign(calc.currentOperator);
         }
 
-        // Tell the app that a operator is present
+        // Tell the app that an operator is present
         calc.hasOperator = true;
 
         // Equal button has not been pressed
