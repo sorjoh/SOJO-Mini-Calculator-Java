@@ -442,52 +442,28 @@ public class UI implements ActionListener {
         if (DEBUG)
             System.out.println("Equal(before) : inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult);
 
+        // Get first and second value from the output
+        String[] splitOutputValue = calc.hasOperator ? calc.outputValue.split("[" + calc.getOperationSign(calc.currentOperator) + "]") : new String[]{calc.outputValue};
+
+        // Set output value to the first split output value
+        calc.outputValue = splitOutputValue[0];
+
         try {
-            // Get first and second value from the output
-            String[] splitOutputValue = calc.outputValue.split("[" + calc.getOperationSign(calc.currentOperator) + "]");
-
-            // Set output value to the first split output value
-            calc.outputValue = splitOutputValue[0];
-
-            try {
-                // Add minus sign in the beginning if current output value is empty and current operator is minus
-                if (calc.currentOperator == Calculator.Operator.MINUS && calc.outputValue.isEmpty()) {
-                    // Set output value to the second split output value
-                    calc.outputValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
-                    // Set input value to the third split output value
-                    calc.inputValue = splitOutputValue[2];
-                } else { // Otherwise set input value to the second split output value
-                    calc.inputValue = splitOutputValue[1];
-                }
-            } catch (Exception e) {
-                if (DEBUG)
-                    System.out.println(e.getMessage() + ", Inner Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
+            // Add minus sign in the beginning if current output value is empty and current operator is minus
+            if (calc.currentOperator == Calculator.Operator.MINUS && calc.outputValue.isEmpty()) {
+                // Set output value to the second split output value
+                calc.outputValue = calc.getOperationSign(Calculator.Operator.MINUS) + splitOutputValue[1];
+                // Set input value to the third split output value
+                calc.inputValue = splitOutputValue[2];
+            } else { // Otherwise set input value to the second split output value
+                calc.inputValue = splitOutputValue[1];
             }
         } catch (Exception e) {
             if (DEBUG)
-                System.out.println(e.getMessage() + ", Outer Try: outputValue=" + calc.outputValue);
-        }
+                System.out.println(e.getMessage());
 
-        try {
-            // Convert and replace the decimal from localities with a dot for the calculation
-            calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
-            calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
-
-            // Calculate the result
-            calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, calc.currentOperator);
-
-            // Set input value to an empty string
-            calc.inputValue = "";
-
-            // Convert and replace the decimal from localities with a dot for the calculation
-            calc.outputValue = String.valueOf(calc.resultValue).replace('.', DECIMAL_SEPARATOR);
-        } catch (Exception e) {
-            if (DEBUG)
-                System.out.println(e.getMessage() + ", After Try: outputValue=" + calc.outputValue + ", inputValue=" + calc.inputValue);
-
-            // Fix if operator is present with no second value and also reset all values if Equal been pressed twice,
-            // otherwise reset all values except for the output value
-            String tmpOutputValue = calc.hasOperator ? calc.outputValue : "";
+            // Reset all values if Equal been pressed twice, otherwise reset all values except for the output value
+            String tmpOutputValue = calc.isEqual ? "" : calc.outputValue; // Save outputValue if needed
 
             // Reset values
             calc.resetValues();
@@ -495,6 +471,25 @@ public class UI implements ActionListener {
             // Restore the output value if needed
             calc.outputValue = tmpOutputValue;
         }
+
+        if (calc.hasOperator) { // Calculation has operator
+            // Set firstValue as BigDecimal value of outputValue plus convert and replace the decimal from localities with a dot for the calculation
+            calc.firstValue = new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.'));
+            // Set firstValue as BigDecimal value of inputValue plus convert and replace the decimal from localities with a dot for the calculation
+            calc.secondValue = new BigDecimal(calc.inputValue.replace(DECIMAL_SEPARATOR, '.'));
+
+            // Calculate the result
+            calc.resultValue = calc.calculate(calc.firstValue, calc.secondValue, calc.currentOperator);
+        } else {
+            // Set resultValue as BigDecimal value of outputValue plus convert and replace the decimal from localities with a dot for the calculation
+            calc.resultValue = !calc.outputValue.isEmpty() ? new BigDecimal(calc.outputValue.replace(DECIMAL_SEPARATOR, '.')) : new BigDecimal("0");
+        }
+
+        // Set input value to an empty string
+        calc.inputValue = "";
+
+        // Convert result value to string plus convert and replace the decimal from localities with a dot for the calculation
+        calc.outputValue = String.valueOf(calc.resultValue).replace('.', DECIMAL_SEPARATOR);
 
         // Set current operator to none
         calc.currentOperator = Calculator.Operator.NONE;
@@ -512,7 +507,7 @@ public class UI implements ActionListener {
         displayOutput(calc.outputValue);
 
         if (DEBUG)
-            System.out.println("Equal(before) : inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult);
+            System.out.println("Equal(after) : inputValue=" + calc.inputValue + ", outputValue=" + calc.outputValue + ", Display=" + display.getText() + ", currentOperation=" + calc.getOperationSign(calc.currentOperator) + ", hasResult=" + calc.hasResult);
     }
 
     // ========= DISPLAY OUTPUT =========
