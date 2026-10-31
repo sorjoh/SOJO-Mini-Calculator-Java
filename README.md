@@ -1,6 +1,6 @@
-# SOJO Mini Calculator (VB.NET)
+# SOJO Mini Calculator (Java)
 
-This project is a simple mini calculator with basic mathematical operations developed in VB.NET.
+This project is a simple mini calculator with basic mathematical operations developed in Java and tested in Java 23.0.2.
 
 The layout and functionalities is inspired from:
 https://ecdn.teacherspayteachers.com/thumbitem/Calculator-Functions-Anchor-Chart-11020447-1707050000/original-11020447-1.jpg
