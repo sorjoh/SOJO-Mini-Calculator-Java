@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2026-10-30T14:48:56.823Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="CXtullHQvHNim6UiSBsf" version="24.1.0" type="device">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
   <diagram name="Sida-1" id="dO3qXG3BHYYNdo1X_Ujf">
-    <mxGraphModel dx="2284" dy="884" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1508" dy="530" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,22 +14,22 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-3" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Operator: Enum&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ PLUS&lt;/p&gt;&lt;div&gt;&amp;nbsp; + MINUS&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; + MULTIPLY&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; + DIVIDE&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; + NONE&lt;/div&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
-          <mxGeometry x="-428" y="201.5" width="120" height="125" as="geometry" />
+          <mxGeometry x="-378" y="202" width="120" height="125" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-4" value="Objects, Classes, Variables and Constants" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;" parent="1" vertex="1">
           <mxGeometry x="-820" y="45" width="670" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-5" value="Calculator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-790" y="115" width="290" height="513" as="geometry" />
+          <mxGeometry x="-790" y="115" width="338" height="515" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-6" value="&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ DECIMAL_SEPARATOR: Char&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ MAX_OUTPUT_LENGTH: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ HasResult: Boolean&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ ResultValue: Double&lt;br&gt;+ FirstValue: Double&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ SecondValue: Double&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ CurrentOperator: Operator&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ HasOperator: Boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ InputValue: String&lt;br&gt;+ OutputValue: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ IsEqual: Boolean&lt;br&gt;&lt;/p&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7m5NKwsVIyrx7-npFDSe-5" vertex="1">
-          <mxGeometry y="26" width="290" height="247" as="geometry" />
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-6" value="&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ DECIMAL_SEPARATOR: Char&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ MAX_OUTPUT_LENGTH: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ HasResult: Boolean&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ ResultValue: BigDecimal&lt;br&gt;+ FirstValue:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;BigDecimal&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ SecondValue:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;BigDecimal&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ CurrentOperator: Operator&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ HasOperator: Boolean&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ InputValue: String&lt;br&gt;+ OutputValue: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px;&quot;&gt;+ IsEqual: Boolean&lt;br&gt;&lt;/p&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7m5NKwsVIyrx7-npFDSe-5" vertex="1">
+          <mxGeometry y="26" width="338" height="247" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7m5NKwsVIyrx7-npFDSe-5" vertex="1">
-          <mxGeometry y="273" width="290" height="8" as="geometry" />
+          <mxGeometry y="273" width="338" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-8" value="&lt;div&gt;+ ReadInput()&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;+ NumberInput(Char)&lt;div&gt;+ DecimalInput(Char)&lt;br&gt;&lt;div&gt;+ OperatorInput(Char)&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Equal()&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ GetOperationSign(Operator): Char&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ GetOperation(Char): Operator&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ Calculate(Double, Double, Operator): Double&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ DisplayOutput(String)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ ResetValues()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7m5NKwsVIyrx7-npFDSe-5" vertex="1">
-          <mxGeometry y="281" width="290" height="232" as="geometry" />
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-8" value="&lt;div&gt;+ ReadInput()&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;+ NumberInput(Char)&lt;div&gt;+ DecimalInput(Char)&lt;br&gt;&lt;div&gt;+ OperatorInput(Char)&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Equal()&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ GetOperationSign(Operator): Char&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ GetOperation(Char): Operator&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ Calculate(&lt;/span&gt;BigDecimal&lt;span style=&quot;background-color: initial;&quot;&gt;,&amp;nbsp;&lt;/span&gt;BigDecimal&lt;span style=&quot;background-color: initial;&quot;&gt;, Operator):&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;BigDecimal&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ DisplayOutput(String)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ ResetValues()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7m5NKwsVIyrx7-npFDSe-5" vertex="1">
+          <mxGeometry y="281" width="338" height="234" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="7m5NKwsVIyrx7-npFDSe-10" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -72,7 +72,7 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-18" value="Decimal Input" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-387" y="865" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-19" value="T&lt;b&gt;he layout and functionalities is inspired from:&lt;/b&gt;&lt;br&gt;https://ecdn.teacherspayteachers.com/thumbitem/Calculator-Functions-Anchor-Chart-11020447-1707050000/original-11020447-1.jpg" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7EA6E0;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-19" value="T&lt;b&gt;he design and functionalities is inspired from:&lt;/b&gt;&lt;br&gt;https://ecdn.teacherspayteachers.com/thumbitem/Calculator-Functions-Anchor-Chart-11020447-1707050000/original-11020447-1.jpg" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#7EA6E0;" parent="1" vertex="1">
           <mxGeometry x="-820" y="814" width="480" height="60" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-21" value="Constant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;" parent="1" vertex="1">
@@ -84,7 +84,7 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-23" value="Boolean" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="1" vertex="1">
           <mxGeometry x="-174" y="240.5" width="106" height="38.5" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-24" value="Double" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-24" value="&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="-174" y="290.5" width="106" height="39.25" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-25" value="Operator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
@@ -453,7 +453,7 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-331" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-158" target="7m5NKwsVIyrx7-npFDSe-330" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-158" value="Calculate(FirstValue, SecondValue, Operation) : Double" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-158" value="Calculate(FirstValue, SecondValue, Operation) :&amp;nbsp;&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1062.5" y="1165" width="315" height="40" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-159" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-164" target="7m5NKwsVIyrx7-npFDSe-166" edge="1">
@@ -916,7 +916,7 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-327" value="Return" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="300" y="976" width="250" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-330" value="+ Result: Double" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-330" value="+ Result:&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="1062.5" y="1245" width="315" height="40" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-335" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-332" target="7m5NKwsVIyrx7-npFDSe-334" edge="1">
@@ -1012,13 +1012,13 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-408" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-362" target="7m5NKwsVIyrx7-npFDSe-363" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-362" value="FirstValue = OutputValue.ToDouble()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-362" value="FirstValue = OutputValue.To&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="1962" y="3326" width="260" height="53" as="geometry" />
         </mxCell>
         <mxCell id="ruQmA-qgL-CJ3Bw_dmaG-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-363" target="Zvc1QL3ytIc0icTaPzF2-92" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-363" value="SecondValue = InputValue.ToDouble()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-363" value="SecondValue = InputValue.To&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="1962" y="3413" width="260" height="53" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-397" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-373" target="7m5NKwsVIyrx7-npFDSe-378" edge="1">
@@ -1212,13 +1212,13 @@
         <mxCell id="7m5NKwsVIyrx7-npFDSe-462" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-451" target="7m5NKwsVIyrx7-npFDSe-452" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-451" value="FirstValue = OutputValue.ToDouble()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-451" value="FirstValue = OutputValue.To&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="2881.75" y="3782" width="260" height="53" as="geometry" />
         </mxCell>
         <mxCell id="ruQmA-qgL-CJ3Bw_dmaG-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-452" target="Zvc1QL3ytIc0icTaPzF2-134" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7m5NKwsVIyrx7-npFDSe-452" value="SecondValue = InputValue.ToDouble()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="7m5NKwsVIyrx7-npFDSe-452" value="SecondValue = InputValue.To&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="2882.25" y="3874" width="260" height="53" as="geometry" />
         </mxCell>
         <mxCell id="7m5NKwsVIyrx7-npFDSe-469" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7m5NKwsVIyrx7-npFDSe-455" target="7m5NKwsVIyrx7-npFDSe-456" edge="1">
@@ -1548,7 +1548,7 @@
         <mxCell id="Zvc1QL3ytIc0icTaPzF2-103" value="False" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontColor=#FF0000;" parent="1" vertex="1">
           <mxGeometry x="2082" y="3582" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Zvc1QL3ytIc0icTaPzF2-104" value="Calculate(Double, Double, Operator): Double" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
+        <mxCell id="Zvc1QL3ytIc0icTaPzF2-104" value="Calculate(&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;,&amp;nbsp;&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;, Operator):&amp;nbsp;&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="2214" y="3610" width="260" height="36" as="geometry" />
         </mxCell>
         <mxCell id="Zvc1QL3ytIc0icTaPzF2-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Zvc1QL3ytIc0icTaPzF2-105" target="7m5NKwsVIyrx7-npFDSe-410" edge="1">
@@ -1624,7 +1624,7 @@
         <mxCell id="Zvc1QL3ytIc0icTaPzF2-131" value="ResultValue = Calculate(FirstValue, SecondValue, CurrentOperator)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="3120.24" y="4031" width="260" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="Zvc1QL3ytIc0icTaPzF2-132" value="Calculate(Double, Double, Operator): Double" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
+        <mxCell id="Zvc1QL3ytIc0icTaPzF2-132" value="Calculate(&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;,&amp;nbsp;&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;, Operator):&amp;nbsp;&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="3106" y="3948" width="260" height="36" as="geometry" />
         </mxCell>
         <mxCell id="Zvc1QL3ytIc0icTaPzF2-133" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="Zvc1QL3ytIc0icTaPzF2-131" target="Zvc1QL3ytIc0icTaPzF2-132" edge="1">
@@ -1647,7 +1647,7 @@
         <mxCell id="ruQmA-qgL-CJ3Bw_dmaG-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Zvc1QL3ytIc0icTaPzF2-137" target="Zvc1QL3ytIc0icTaPzF2-141" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Zvc1QL3ytIc0icTaPzF2-137" value="ResultValue = OutputValue.ToDouble()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+        <mxCell id="Zvc1QL3ytIc0icTaPzF2-137" value="ResultValue = OutputValue.To&lt;span style=&quot;text-align: left;&quot;&gt;BigDecimal&lt;/span&gt;()" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=1;spacing=0;spacingLeft=12;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
           <mxGeometry x="2882" y="4160" width="260" height="53" as="geometry" />
         </mxCell>
         <mxCell id="Zvc1QL3ytIc0icTaPzF2-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Zvc1QL3ytIc0icTaPzF2-141" target="7m5NKwsVIyrx7-npFDSe-459" edge="1">
