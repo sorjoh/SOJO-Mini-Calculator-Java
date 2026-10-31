@@ -5,7 +5,7 @@ import java.text.DecimalFormatSymbols;
 
 public class Main extends JFrame {
     // Use debugging if needed
-    private static final Boolean DEBUG = true;
+    private static final Boolean DEBUG = false;
 
     // Max length of the display numbers
     private static final Integer MAX_INPUT_LENGTH = 15;
